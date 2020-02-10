@@ -39,7 +39,8 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 
             var query = Query.And(
                            Query.EQ("Username", k.Username),
-                           Query.EQ("Password", k.Password)
+                           Query.EQ("Password", k.Password),
+                           Query.EQ("_t","Posmatrac")
                            );
 
             var result = collection.Find(query);
@@ -77,7 +78,8 @@ namespace MongoDB_Repository.Forme.KorisnikForme
                 var db = server.GetDatabase("MongoNBP");
 
                 var collection = db.GetCollection<Posmatrac>("korisnici");
-                var query = Query.EQ("Username", korisnik.Username);
+                var query = Query.And(Query.EQ("Username", korisnik.Username),
+                                      Query.EQ("_t", "Posmatrac"));
 
                 var update = Update<Posmatrac>.Set(k => k.Ime, txbIme.Text).
                                                       Set(k => k.Prezime, txbPrezime.Text).

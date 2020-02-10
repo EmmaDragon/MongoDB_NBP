@@ -43,7 +43,8 @@ namespace MongoDB_Repository.Forme.AdminForme
 
             var query = Query.And(
                            Query.EQ("Username", txbUsername.Text),
-                           Query.EQ("Password", txbPassword.Text)
+                           Query.EQ("Password", txbPassword.Text),
+                           Query.EQ("_t","Admin")
                            );
 
             var result = collection.Find(query);

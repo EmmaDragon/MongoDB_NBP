@@ -118,7 +118,7 @@ namespace MongoDB_Repository.Forme.AdminForme
                 foreach (MongoDBRef zaposleniRef in s.Odgovorni.ToList())
                 {
                     Zaposleni z = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                    var queryZaposleni = Query.EQ("Username", z.Username);
+                    var queryZaposleni = Query.EQ("_id", new ObjectId(z.Id.ToString()));
                     collectionZaposleni.Remove(queryZaposleni);
                 }
                 foreach (MongoDBRef merenjeRef in s.IzmereneVrednosti.ToList())

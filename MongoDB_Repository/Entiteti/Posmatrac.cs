@@ -11,7 +11,7 @@ using MongoNBP.Entiteti;
 
 namespace Podaci
 {
-    [BsonDiscriminator("Posmatrac")]
+    
     public class Posmatrac : Korisnik
     {
         public String DatumRodjenja { get; set; }

@@ -9,7 +9,7 @@ using MongoNBP.Entiteti;
 
 namespace MongoDB_Repository.Entiteti
 {
-    [BsonDiscriminator("Admin")]
+  
     public class Admin : Korisnik
     {
         public String Okrug { get; set; }

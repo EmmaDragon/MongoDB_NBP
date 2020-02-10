@@ -13,6 +13,7 @@ using MongoDB.Driver.Builders;
 using MongoDB_Repository.Entiteti;
 using Podaci;
 using MongoNBP.Forme.KorisnikForme;
+using MongoNBP.Entiteti;
 
 namespace MongoDB_Repository.Forme.KorisnikForme
 {
@@ -63,7 +64,8 @@ namespace MongoDB_Repository.Forme.KorisnikForme
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
             var collection = db.GetCollection<Posmatrac>("korisnici");
-            var query = Query.EQ("_id", ObjectId.Parse(this.korisnik.Id.ToString()));
+            var query = Query.And(Query.EQ("Username", korisnik.Username),
+                                      Query.EQ("_t", "Posmatrac"));
             var result = collection.Find(query).ToList<Posmatrac>();
             OsveziStranicu(result[0]);
 

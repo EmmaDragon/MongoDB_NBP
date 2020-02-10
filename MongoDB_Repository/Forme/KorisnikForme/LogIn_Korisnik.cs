@@ -33,7 +33,8 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 
             var query = Query.And(
                            Query.EQ("Username", txbUsername.Text),
-                           Query.EQ("Password", txbPassword.Text)
+                           Query.EQ("Password", txbPassword.Text),
+                            Query.EQ("_t", "Posmatrac")
                            );
 
             var result = collection.Find(query);

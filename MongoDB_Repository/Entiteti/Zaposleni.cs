@@ -10,7 +10,7 @@ using MongoNBP.Entiteti;
 
 namespace Podaci
 {
-    [BsonDiscriminator("Zaposleni")]
+    
     public class Zaposleni : Korisnik
     {
         public String Jmbg { get; set; }

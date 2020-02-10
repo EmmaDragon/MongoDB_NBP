@@ -110,18 +110,19 @@ namespace MongoDB_Repository.Forme.KorisnikForme
             var connectionString = "mongodb://localhost/?safe=true";
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
-            var collectionKorisnici = db.GetCollection<Korisnik>("korisnici");
+            var collectionKorisnici = db.GetCollection<Posmatrac>("korisnici");
             var query = Query.And(Query.EQ("Jmbg", jmbg),
-                Query.EQ("_t", "Posmatrac"));
+                                  Query.EQ("_t", "Posmatrac"));
             var result = collectionKorisnici.Find(query);
-            if (result.Count<Korisnik>() != 0)
+            if (result.Count<Posmatrac>() != 0)
             {
-                        MessageBox.Show("Posmatrac sa zadatim jmbg-om vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return !ind;
-                    
+                MessageBox.Show("Posmatrac sa zadatim jmbg-om vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return !ind;
+
             }
-            query = Query.EQ("Username", username);
-            result = collectionKorisnici.Find(query);
+             query = Query.And(Query.EQ("Username", username),
+                               Query.EQ("_t","Posmatrac"));
+             result = collectionKorisnici.Find(query);
             if (result.Count<Korisnik>() != 0)
             {
                 MessageBox.Show("Username koji zelite da koristite vec postoji! Pokusajte sa drugin username-om.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);

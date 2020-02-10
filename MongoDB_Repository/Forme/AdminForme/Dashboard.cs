@@ -177,7 +177,9 @@ namespace MongoDB_Repository.Forme.AdminForme
             }
             else
             {
-                query = Query.EQ("Username", zaposleni.Username);
+                //svuda ce tip da se pita
+                query = Query.And(Query.EQ("Username", zaposleni.Username),
+                                  Query.EQ("_t", "Zaposleni"));
                 result = collection.Find(query);
                 if (result.Count<Korisnik>() != 0)
                 {
@@ -186,7 +188,8 @@ namespace MongoDB_Repository.Forme.AdminForme
                 else
                 {
                     collection.Insert(zaposleni);
-                    query = Query.EQ("Username", zaposleni.Username);
+                    query = Query.And(Query.EQ("Username", zaposleni.Username),
+                                   Query.EQ("_t", "Zaposleni"));
                     result = collection.Find(query);
                     var collectionVremenskaStanica = db.GetCollection<VremenskaStanica>("vremenske_stanice");
                     foreach (Zaposleni r in result)
