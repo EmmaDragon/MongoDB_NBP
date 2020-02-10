@@ -84,10 +84,13 @@ namespace MongoDB_Repository.Forme.AdminForme
             listaZaposlenih.Items.Clear();
             foreach (MongoDBRef zaposleniRef in stanica.Odgovorni.ToList())
             {
-               Zaposleni z = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                ListViewItem item = new ListViewItem(new string[]
+                Zaposleni z = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
+                if (z != null)
+                {
+                    ListViewItem item = new ListViewItem(new string[]
                      {z.Id.ToString(),z.Ime,z.Prezime,z.Jmbg,z.Zvanje});
-                listaZaposlenih.Items.Add(item);
+                    listaZaposlenih.Items.Add(item);
+                }
             }
 
             listaZaposlenih.Refresh();
@@ -121,7 +124,7 @@ namespace MongoDB_Repository.Forme.AdminForme
                 foreach (MongoDBRef zaposleniRef in s.Odgovorni.ToList())
                 {
                     Zaposleni tmp = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                    if (z.Id == tmp.Id)
+                    if (tmp!=null && z.Id == tmp.Id)
                         s.Odgovorni.Remove(zaposleniRef);
                 }
                 collectionStanice.Save(s);

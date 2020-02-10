@@ -14,28 +14,28 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 {
     public partial class IzmenaPodataka : Form
     {
-        private Korisnik korisnik;
+        private Posmatrac korisnik;
 
         public IzmenaPodataka()
         {
             InitializeComponent();
         }
 
-        public IzmenaPodataka(Korisnik k)
+        public IzmenaPodataka(Posmatrac k)
         {
             this.korisnik = k;
             InitializeComponent();
 
             OsveziStranicu(k);
         }
-        public void OsveziStranicu(Korisnik k)
+        public void OsveziStranicu(Posmatrac k)
         {
             
             var connectionString = "mongodb://localhost/?safe=true";
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
 
-            var collection = db.GetCollection<Korisnik>("korisnici");
+            var collection = db.GetCollection<Posmatrac>("korisnici");
 
             var query = Query.And(
                            Query.EQ("Username", k.Username),
@@ -44,9 +44,9 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 
             var result = collection.Find(query);
 
-            foreach (Korisnik ko in result)
+            foreach (Posmatrac ko in result)
             {
-                Korisnik KKorisnik = new Korisnik(ko.Id, ko.Ime, ko.Prezime, ko.Username, ko.Password, ko.Zvanje, ko.Jmbg, ko.DatumRodjenja);
+                Posmatrac KKorisnik = new Posmatrac(ko.Id, ko.Ime, ko.Prezime, ko.Username, ko.Password, ko.Zvanje, ko.Jmbg, ko.DatumRodjenja);
                 k = KKorisnik;
             }
             this.korisnik = k;
@@ -76,10 +76,10 @@ namespace MongoDB_Repository.Forme.KorisnikForme
                 var server = MongoServer.Create(connectionString);
                 var db = server.GetDatabase("MongoNBP");
 
-                var collection = db.GetCollection<Korisnik>("korisnici");
+                var collection = db.GetCollection<Posmatrac>("korisnici");
                 var query = Query.EQ("Username", korisnik.Username);
 
-                var update = Update<Korisnik>.Set(k => k.Ime, txbIme.Text).
+                var update = Update<Posmatrac>.Set(k => k.Ime, txbIme.Text).
                                                       Set(k => k.Prezime, txbPrezime.Text).
                                                       Set(k => k.Zvanje, txbZvanje.Text).
                                                       Set(k => k.DatumRodjenja, maskedTextBox1.Text).

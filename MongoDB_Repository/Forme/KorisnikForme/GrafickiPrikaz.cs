@@ -18,7 +18,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
     public partial class GrafickiPrikaz : Form
     {
 
-        private Korisnik korisnik;
+        private Posmatrac korisnik;
 
       
         private VremenskaStanica vs;
@@ -64,7 +64,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
                 MessageBox.Show("Nema dostupnih vremenskih stanica!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public GrafickiPrikaz(string v, Korisnik korisnik)
+        public GrafickiPrikaz(string v, Posmatrac korisnik)
         {
             InitializeComponent();
             UcitajVremenskeStanice();

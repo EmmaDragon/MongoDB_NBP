@@ -17,7 +17,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 {
     public partial class Statistika : Form
     {
-        private Korisnik korisnik;
+        private Posmatrac korisnik;
         private VremenskaStanica vs;
         private int brojac = 0;
 
@@ -25,7 +25,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
         private List<Temperatura> nizTemperatura = new List<Temperatura>();
         private List<Padavine> nizPadavine = new List<Padavine>();
         private List<VlaznostVazduha> nizVlaznostVazduha = new List<VlaznostVazduha>();
-        public Statistika(Korisnik korisnik)
+        public Statistika(Posmatrac korisnik)
         {
             InitializeComponent();
             UcitajVremenskeStanice();

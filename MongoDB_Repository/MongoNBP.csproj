@@ -69,8 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entiteti\Admin.cs" />
-    <Compile Include="Entiteti\Korisnici.cs" />
     <Compile Include="Entiteti\Korisnik.cs" />
+    <Compile Include="Entiteti\Posmatrac.cs" />
     <Compile Include="Entiteti\Merenje.cs" />
     <Compile Include="Entiteti\VremenskaStanica.cs" />
     <Compile Include="Entiteti\VremenskiParametar.cs" />

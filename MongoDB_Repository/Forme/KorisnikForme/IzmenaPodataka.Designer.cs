@@ -161,6 +161,7 @@
             // 
             this.txbJmbg.Location = new System.Drawing.Point(152, 149);
             this.txbJmbg.Name = "txbJmbg";
+            this.txbJmbg.ReadOnly = true;
             this.txbJmbg.Size = new System.Drawing.Size(176, 20);
             this.txbJmbg.TabIndex = 8;
             // 

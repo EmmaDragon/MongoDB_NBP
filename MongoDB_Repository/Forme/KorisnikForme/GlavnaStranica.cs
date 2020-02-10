@@ -18,19 +18,19 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 {
     public partial class GlavnaStranica : Form
     {
-        private Korisnik korisnik;
+        private Posmatrac korisnik;
         public GlavnaStranica()
         {
             InitializeComponent();
 
         }
-        public GlavnaStranica(Korisnik k)
+        public GlavnaStranica(Posmatrac k)
         {
             this.korisnik = k;
             InitializeComponent();
             OsveziStranicu(k);
         }
-        public void OsveziStranicu(Korisnik k)
+        public void OsveziStranicu(Posmatrac k)
         { 
             this.korisnik = k;
             this.lblIme.Text = k.Ime.ToUpper();
@@ -62,9 +62,9 @@ namespace MongoDB_Repository.Forme.KorisnikForme
             var connectionString = "mongodb://localhost/?safe=true";
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
-            var collection = db.GetCollection<Korisnik>("korisnici");
+            var collection = db.GetCollection<Posmatrac>("korisnici");
             var query = Query.EQ("_id", ObjectId.Parse(this.korisnik.Id.ToString()));
-            var result = collection.Find(query).ToList<Korisnik>();
+            var result = collection.Find(query).ToList<Posmatrac>();
             OsveziStranicu(result[0]);
 
         }

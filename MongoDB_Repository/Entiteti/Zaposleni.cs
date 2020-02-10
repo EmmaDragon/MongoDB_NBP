@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using MongoNBP.Entiteti;
 
 namespace Podaci
 {
-    public class Zaposleni : Korisnici
+    [BsonDiscriminator("Zaposleni")]
+    public class Zaposleni : Korisnik
     {
         public String Jmbg { get; set; }
         public String Zvanje { get; set; }

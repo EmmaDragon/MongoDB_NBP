@@ -165,20 +165,23 @@ namespace MongoDB_Repository.Forme.AdminForme
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
 
-            var collection = db.GetCollection<Korisnici>("korisnici");
-            var query = Query.EQ("Jmbg", zaposleni.Jmbg);
+            var collection = db.GetCollection<Korisnik>("korisnici");
+            var query = Query.And(
+                Query.EQ("Jmbg", zaposleni.Jmbg),
+                Query.EQ("_t", "Zaposleni"));
             var result = collection.Find(query);
-            if (result.Count<Korisnici>() != 0)
+            if (result.Count<Korisnik>() != 0)
             {
-                MessageBox.Show("Zaposleni sa zadatim jmbg-om vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                   MessageBox.Show("Zaposleni sa zadatim jmbg-om vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                   return;
             }
             else
             {
                 query = Query.EQ("Username", zaposleni.Username);
                 result = collection.Find(query);
-                if (result.Count<Korisnici>() != 0)
+                if (result.Count<Korisnik>() != 0)
                 {
-                    MessageBox.Show("Zaposleni sa zadatim korisnickim imenom vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Korisnicko ime je vec zauzeto!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 else
                 {

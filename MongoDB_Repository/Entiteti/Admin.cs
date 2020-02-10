@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using MongoNBP.Entiteti;
 
 namespace MongoDB_Repository.Entiteti
 {
-    public class Admin : Korisnici
+    [BsonDiscriminator("Admin")]
+    public class Admin : Korisnik
     {
         public String Okrug { get; set; }
 

@@ -29,7 +29,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
 
-            var collection = db.GetCollection<Korisnik>("korisnici");
+            var collection = db.GetCollection<Posmatrac>("korisnici");
 
             var query = Query.And(
                            Query.EQ("Username", txbUsername.Text),
@@ -38,15 +38,15 @@ namespace MongoDB_Repository.Forme.KorisnikForme
 
             var result = collection.Find(query);
 
-            if (result.Count<Korisnik>() == 0)
+            if (result.Count<Posmatrac>() == 0)
             {
                 MessageBox.Show("Pogresno uneto korisnicko ime ili sifra!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                foreach (Korisnik k in result)
+                foreach (Posmatrac k in result)
                 {
-                    Korisnik korisnik = new Korisnik(k.Id, k.Ime, k.Prezime, k.Username, k.Password, k.Zvanje, k.Jmbg, k.DatumRodjenja);
+                    Posmatrac korisnik = new Posmatrac(k.Id, k.Ime, k.Prezime, k.Username, k.Password, k.Zvanje, k.Jmbg, k.DatumRodjenja);
                     Form forma = new GlavnaStranica(korisnik);
                     forma.ShowDialog();
                 }

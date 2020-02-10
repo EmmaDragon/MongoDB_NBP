@@ -87,7 +87,7 @@ namespace MongoDB_Repository.Forme.AdminForme
                     foreach (MongoDBRef zaposleniRef in s.Odgovorni.ToList())
                     {
                         Zaposleni tmp = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                        if (zaposleni.Id == tmp.Id)
+                        if (tmp!=null && zaposleni.Id == tmp.Id)
                         {
                             s.Odgovorni.Remove(zaposleniRef);
                             selected.Odgovorni.Add(zaposleniRef);
