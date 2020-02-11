@@ -116,7 +116,7 @@ namespace MongoDB_Repository.Forme.AdminForme
 
                 var collectionStanice = db.GetCollection<VremenskaStanica>("vremenske_stanice");
                 var collectionZaposleni = db.GetCollection<Zaposleni>("korisnici");
-                var query = Query.EQ("_id", ObjectId.Parse(id));
+                var query = Query.EQ("_id", new ObjectId(id));
 
                 var result = collectionZaposleni.Find(query).ToList<Zaposleni>();
                 Zaposleni z = result[0];
@@ -127,8 +127,9 @@ namespace MongoDB_Repository.Forme.AdminForme
                     if (tmp!=null && z.Id == tmp.Id)
                         s.Odgovorni.Remove(zaposleniRef);
                 }
-                collectionStanice.Save(s);
+                collectionStanice.Save<VremenskaStanica>(s);
                 collectionZaposleni.Remove(query);
+               
                 MessageBox.Show("Uspesno ste obrisali vremensku stanicu!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.PopuniTabeluOdgPodacima();
             }

@@ -30,7 +30,7 @@ namespace MongoDB_Repository.Forme.KorisnikForme
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
 
-            var collection = db.GetCollection<Korisnik>("korisnici");
+            var collection = db.GetCollection<Posmatrac>("korisnici");
             if (Validacija())
             {
                 

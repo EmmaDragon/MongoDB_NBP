@@ -13,5 +13,6 @@ namespace MongoNBP.Entiteti
         public String Prezime { get; set; }
         public String Username { get; set; }
         public String Password { get; set; }
+        public String _t { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace Podaci
             this.Prezime = prezime;
             this.Username = username;
             this.Password = password;
+            this._t = "Posmatrac";
         }
 
         public Posmatrac(String ime, String prezime, String username, String password, MongoDBRef stanica)
@@ -34,6 +35,7 @@ namespace Podaci
             this.Prezime = prezime;
             this.Username = username;
             this.Password = password;
+            this._t = "Posmatrac";
         }
         public Posmatrac(String ime, String prezime, String username, String password, String zvanje, String JMBG, String DatumRodj)
         {
@@ -44,6 +46,7 @@ namespace Podaci
             this.DatumRodjenja = DatumRodj;
             this.Jmbg = JMBG;
             this.Zvanje = zvanje;
+            this._t = "Posmatrac";
         }
         public Posmatrac(ObjectId id, String ime, String prezime, String username, String password, String zvanje, String JMBG, String DatumRodj)
         {
@@ -55,6 +58,7 @@ namespace Podaci
             this.DatumRodjenja = DatumRodj;
             this.Jmbg = JMBG;
             this.Zvanje = zvanje;
+            this._t = "Posmatrac";
         }
     }
 }

@@ -107,7 +107,7 @@ namespace MongoDB_Repository.Forme.AdminForme
                 var db = server.GetDatabase("MongoNBP");
 
                 var collection = db.GetCollection<VremenskaStanica>("vremenske_stanice");
-                var collectionZaposleni = db.GetCollection<Zaposleni>("korisnici");
+                var collectionZaposleni = db.GetCollection<Korisnik>("korisnici");
                 var collectionMerenja = db.GetCollection<Merenje>("merenja");
 
                 var query = Query.And(
@@ -118,7 +118,8 @@ namespace MongoDB_Repository.Forme.AdminForme
                 foreach (MongoDBRef zaposleniRef in s.Odgovorni.ToList())
                 {
                     Zaposleni z = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                    var queryZaposleni = Query.EQ("_id", new ObjectId(z.Id.ToString()));
+                    var queryZaposleni = Query.And(Query.EQ("Username", z.Username),
+                                                   Query.EQ("_t","Zaposleni"));
                     collectionZaposleni.Remove(queryZaposleni);
                 }
                 foreach (MongoDBRef merenjeRef in s.IzmereneVrednosti.ToList())

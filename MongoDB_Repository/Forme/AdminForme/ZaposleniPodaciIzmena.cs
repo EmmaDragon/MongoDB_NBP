@@ -94,8 +94,8 @@ namespace MongoDB_Repository.Forme.AdminForme
                         }
                     }
                     
-                    collectionStanice.Save(s);
-                    collectionStanice.Save(selected);
+                    collectionStanice.Save<VremenskaStanica>(s);
+                    collectionStanice.Save<VremenskaStanica>(selected);
                 }
                 MessageBox.Show("Uspesno ste izvrsili izmene!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

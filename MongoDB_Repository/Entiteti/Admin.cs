@@ -21,6 +21,7 @@ namespace MongoDB_Repository.Entiteti
             this.Username = username;
             this.Password = password;
             this.Okrug = okrug;
+            this._t = "Admin";
         }
 
         public Admin(ObjectId id, String ime, String prezime, String username, String password, String okrug)
@@ -31,6 +32,7 @@ namespace MongoDB_Repository.Entiteti
             this.Username = username;
             this.Password = password;
             this.Okrug = okrug;
+            this._t = "Admin";
         }
     }
 }

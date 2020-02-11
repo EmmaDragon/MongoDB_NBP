@@ -28,7 +28,8 @@ namespace Podaci
             this.Jmbg = jmbg;
             this.Zvanje = zvanje;
             this.VremenskaStanica = stanica;
-            
+            this._t = "Zaposleni";
+
         }
 
         public Zaposleni(String ime, String prezime, String username, String password, String jmbg, String zvanje, MongoDBRef stanica)
@@ -41,6 +42,7 @@ namespace Podaci
             this.Jmbg = jmbg;
             this.Zvanje = zvanje;
             this.VremenskaStanica = stanica;
+            this._t = "Zaposleni";
         }
 
     }

@@ -165,12 +165,12 @@ namespace MongoDB_Repository.Forme.AdminForme
             var server = MongoServer.Create(connectionString);
             var db = server.GetDatabase("MongoNBP");
 
-            var collection = db.GetCollection<Korisnik>("korisnici");
+            var collection = db.GetCollection<Zaposleni>("korisnici");
             var query = Query.And(
                 Query.EQ("Jmbg", zaposleni.Jmbg),
                 Query.EQ("_t", "Zaposleni"));
             var result = collection.Find(query);
-            if (result.Count<Korisnik>() != 0)
+            if (result.Count<Zaposleni>() != 0)
             {
                    MessageBox.Show("Zaposleni sa zadatim jmbg-om vec postoji!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                    return;
@@ -181,7 +181,7 @@ namespace MongoDB_Repository.Forme.AdminForme
                 query = Query.And(Query.EQ("Username", zaposleni.Username),
                                   Query.EQ("_t", "Zaposleni"));
                 result = collection.Find(query);
-                if (result.Count<Korisnik>() != 0)
+                if (result.Count<Zaposleni>() != 0)
                 {
                     MessageBox.Show("Korisnicko ime je vec zauzeto!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
