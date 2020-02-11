@@ -55,7 +55,8 @@ namespace MongoDB_Repository.Forme.ZaposleniForme
                 var query = Query.EQ("_id",ObjectId.Parse(zaposleni.Id.ToString()));
                 if (txbUsername.Text!=zaposleni.Username)
                 {
-                    query = Query.EQ("Username", txbUsername.Text);
+                    query = Query.And(Query.EQ("Username", txbUsername.Text),
+                                      Query.EQ("_t", "Zaposleni"));
                     var result=collection.Find(query);
                     if(result.Count<Zaposleni>()!=0)
                     {

@@ -11,6 +11,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
+using MongoNBP.Entiteti;
 
 namespace MongoDB_Repository.Forme.AdminForme
 {
@@ -68,7 +69,8 @@ namespace MongoDB_Repository.Forme.AdminForme
                 var db = server.GetDatabase("MongoNBP");
 
                 var collection = db.GetCollection<Zaposleni>("korisnici");
-                var query = Query.EQ("_id", ObjectId.Parse(zaposleni.Id.ToString()));
+                var query = Query.And(Query.EQ("Username", zaposleni.Username),
+                                      Query.EQ("_t", "Zaposleni")) ;
 
                 var update = Update<Zaposleni>.Set(z => z.Ime, txbIme.Text).
                                                       Set(z => z.Prezime, txbPrezime.Text).
@@ -92,10 +94,11 @@ namespace MongoDB_Repository.Forme.AdminForme
                             s.Odgovorni.Remove(zaposleniRef);
                             selected.Odgovorni.Add(zaposleniRef);
                         }
+                        collectionStanice.Save<VremenskaStanica>(s);
+                        collectionStanice.Save<VremenskaStanica>(selected);
                     }
                     
-                    collectionStanice.Save<VremenskaStanica>(s);
-                    collectionStanice.Save<VremenskaStanica>(selected);
+
                 }
                 MessageBox.Show("Uspesno ste izvrsili izmene!", "Obavestenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
