@@ -89,13 +89,14 @@ namespace MongoDB_Repository.Forme.AdminForme
                     foreach (MongoDBRef zaposleniRef in s.Odgovorni.ToList())
                     {
                         Zaposleni tmp = db.FetchDBRefAs<Zaposleni>(zaposleniRef);
-                        if (tmp!=null && zaposleni.Id == tmp.Id)
+                        if (tmp!=null && zaposleni.Username == tmp.Username && tmp._t=="Zaposleni")
                         {
                             s.Odgovorni.Remove(zaposleniRef);
+                            collectionStanice.Save<VremenskaStanica>(s);
                             selected.Odgovorni.Add(zaposleniRef);
+                            collectionStanice.Save<VremenskaStanica>(selected);
                         }
-                        collectionStanice.Save<VremenskaStanica>(s);
-                        collectionStanice.Save<VremenskaStanica>(selected);
+                                              
                     }
                     
 

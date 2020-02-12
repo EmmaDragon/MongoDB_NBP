@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"MongoNBP.vremenske_stanice"}],"uuid":"a7c410ca43a24531890f0b1aaedbe813"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"MongoNBP.vremenske_stanice"}],"uuid":"4a7d25ca21754a098af04f3daf43bf43"}
