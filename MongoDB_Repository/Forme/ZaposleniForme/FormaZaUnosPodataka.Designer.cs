@@ -33,8 +33,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numProcenti = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.chbNe = new System.Windows.Forms.CheckBox();
-            this.chbDa = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txbNapomena = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.chbDa = new System.Windows.Forms.RadioButton();
+            this.chbNe = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numProcenti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numVlaznost)).BeginInit();
@@ -61,11 +61,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chbNe);
+            this.groupBox1.Controls.Add(this.chbDa);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.numProcenti);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.chbNe);
-            this.groupBox1.Controls.Add(this.chbDa);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txbNapomena);
             this.groupBox1.Controls.Add(this.label4);
@@ -114,26 +114,6 @@
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 19;
             this.label6.Text = "* U procentima:";
-            // 
-            // chbNe
-            // 
-            this.chbNe.AutoSize = true;
-            this.chbNe.Location = new System.Drawing.Point(265, 139);
-            this.chbNe.Name = "chbNe";
-            this.chbNe.Size = new System.Drawing.Size(42, 17);
-            this.chbNe.TabIndex = 18;
-            this.chbNe.Text = "Ne";
-            this.chbNe.UseVisualStyleBackColor = true;
-            // 
-            // chbDa
-            // 
-            this.chbDa.AutoSize = true;
-            this.chbDa.Location = new System.Drawing.Point(215, 139);
-            this.chbDa.Name = "chbDa";
-            this.chbDa.Size = new System.Drawing.Size(42, 17);
-            this.chbDa.TabIndex = 17;
-            this.chbDa.Text = "Da";
-            this.chbDa.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -312,6 +292,28 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // chbDa
+            // 
+            this.chbDa.AutoSize = true;
+            this.chbDa.Location = new System.Drawing.Point(218, 138);
+            this.chbDa.Name = "chbDa";
+            this.chbDa.Size = new System.Drawing.Size(41, 17);
+            this.chbDa.TabIndex = 22;
+            this.chbDa.Text = "Da";
+            this.chbDa.UseVisualStyleBackColor = true;
+            // 
+            // chbNe
+            // 
+            this.chbNe.AutoSize = true;
+            this.chbNe.Checked = true;
+            this.chbNe.Location = new System.Drawing.Point(280, 138);
+            this.chbNe.Name = "chbNe";
+            this.chbNe.Size = new System.Drawing.Size(41, 17);
+            this.chbNe.TabIndex = 23;
+            this.chbNe.TabStop = true;
+            this.chbNe.Text = "Ne";
+            this.chbNe.UseVisualStyleBackColor = true;
+            // 
             // FormaZaUnosPodataka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -358,10 +360,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numProcenti;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox chbNe;
-        private System.Windows.Forms.CheckBox chbDa;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbNapomena;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton chbNe;
+        private System.Windows.Forms.RadioButton chbDa;
     }
 }
